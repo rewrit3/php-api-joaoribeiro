@@ -11,12 +11,12 @@
   switch ($route):
     case 'home':
       require_once('inc/header.php');
-      require_once('inc/home.php');
+      require_once('script/home.php');
       require_once('inc/footer.php');
       break;
     case '404':
       require_once('inc/header.php');
-      require_once('inc/404.php');
+      require_once('script/404.php');
       require_once('inc/footer.php');
       break;
   endswitch;
