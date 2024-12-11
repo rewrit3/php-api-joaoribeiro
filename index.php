@@ -1,6 +1,8 @@
 <?php
   define('CONTROL', true);
 
+  require_once('inc/api.php');
+
   $routes = require_once('inc/routes.php');
   $route = $_GET['route'] ?? 'home';
 
