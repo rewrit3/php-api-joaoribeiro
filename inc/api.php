@@ -12,7 +12,10 @@
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => $method,
                 CURLOPT_HTTPHEADER => [
-                    "Accept: */*"
+                    "Accept: */*",
+                    "Content-Type: application/json",
+                    "Connection: Keep-Alive",
+                    "Keep-Alive: 300"
                 ],
             ]);
         
@@ -22,7 +25,7 @@
             curl_close($curl);
         
             if ($err) {
-                echo 'cURL Error #:' . $err;
+                echo 'cURL Error #: ' . $err;
                 die(0);
             } else {
                 return json_decode($response, true);
@@ -30,7 +33,18 @@
         }
 
         public function get_all_countries() {
-            return $this->api('all');
+            $results = $this->api('all');
+            $countries = [];
+
+            foreach($results as $result):
+                $countries[] = $result['name']['common'];
+            endforeach;
+            
+            return $countries;
+        }
+
+        public function get_country($country_name) {
+            return $this->api('name/' . $country_name);
         }
     }
 ?>
