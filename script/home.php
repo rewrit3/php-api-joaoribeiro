@@ -1,10 +1,4 @@
-<?php
-defined('CONTROL') or die('Acesso negado.');
-
-$api = new API();
-$api->get_all_countries();
-print_r($api);
-?>
+<?php defined('CONTROL') or die('Acesso negado.'); ?>
 
 <div class="container mt-5">
     <div class="row">
